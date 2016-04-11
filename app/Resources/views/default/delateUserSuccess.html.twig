@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<html>
+    <head>
+        <title>{% block title %}Success!{% endblock %}</title>      
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="alert alert-success"> <li>{{ users.username }}: usunięto Cię z serwisu</li>
+          <a href="{{ path('deleteAccount') }}">usun konto</a>   
+            
+  </div>
+    </body>
+</html>
+{% endblock %}

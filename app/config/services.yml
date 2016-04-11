@@ -1,0 +1,10 @@
+services:
+    app.form.type.task:
+        class: AppBundle\Form\Type\FormType
+        tags: 
+            - { name: form.type }
+
+    app.form.type.task1:
+        class: AppBundle\Form\Type\RegisterType
+        tags: 
+            - { name: form.type }

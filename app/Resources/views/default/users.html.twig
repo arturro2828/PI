@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<html>
+    <head>
+        <title>{% block title %}Success!{% endblock %}</title>      
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+       
+        
+    </head>
+    <body>
+        <div class="alert alert-info">
+            
+    Zarejestrowani użytkownicy!{% for user in users %} 
+    <table style="width:50%">
+        <tr>
+            <td>username:{{ user.username|e }}</td>
+            <td>password:{{ user.password|e }}</td>
+            <td>email:{{ user.email|e }}</td>
+        </tr>
+    </table>       
+    {% endfor %}</div>
+    </body>
+</html>
+{% endblock %}

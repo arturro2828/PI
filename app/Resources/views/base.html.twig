@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <title>{% block title %}Welcome to my world!{% endblock %}</title>
+        
+        <link rel="stylesheet" href=" {{ asset('bundles/app/css/css.css') }}"  />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+        <script src="{{ asset('bundles/app/js/test.js') }}"></script>
+        <!script src="{{ asset('bundles/app/js/js.js') }}"></script>
+        <!script src="{{ asset('bundles/app/js/jquery.errorToggle.js') }}"></script>
+
+     
+        
+    </head>
+    <body>
+    {% block body %}{% endblock %}
+    {% block javascripts %}
+    {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}Rejestracja{% endblock %}
+
+{% block body %} 
+    <div class="form-signin">
+
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate', 'action':'/app_dev.php/registration'}}) }}
+
+        <h2  class="form-signin-heading">Podaj swoje dane</h2>		
+        <div id="signin-success" class="alert alert-success">Utworzono konto</div>
+
+        <div class="username-hide">
+        {{ form_row(form.username) }}
+        <div id="username-error" class="alert alert-danger">Taki urzytkownik już istnieje</div>
+        </div>
+        
+        <div class="email-hide">
+        {{ form_row(form.email) }}
+        <div id="email-error" class="alert alert-danger">Błąd wpisywania adresu email</div>
+        </div>
+        
+        <div class="password-hide">
+        {{ form_row(form.password) }}
+        <div id="password-error" class="alert alert-danger">Błąd wpisywania hasła</div>
+        </div>
+            
+        {{ form_widget(form.RegisterButton) }}
+             
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
