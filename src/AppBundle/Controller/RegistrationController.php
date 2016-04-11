@@ -24,7 +24,7 @@ class RegistrationController extends Controller {
        //$form->isSubmitted() && $form->isValid()
         
       
-        if ( $form->get('RegisterButton')->isClicked()) {
+        if ( $form->isValid()) {
 
             $user = $form->getData();
             $repository = $this->getDoctrine()->getRepository('AppBundle:User');
