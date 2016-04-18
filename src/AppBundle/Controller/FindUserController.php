@@ -8,8 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\User;
-use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Form\Type\FormType;
+
 
 class FindUserController extends Controller {
 
@@ -18,9 +17,9 @@ class FindUserController extends Controller {
      */
     public function newAction(Request $request) {
 
-        $user = new User();
+        //$user = new User();
+        //$form = $this->createForm('AppBundle\Form\Type\FormType');
         $form = $this->createForm('AppBundle\Form\Type\FormType');
-        //$form = $this->createForm('AppBundle\Form\Type\FormType', $user);
         $form->handleRequest($request);
          
 

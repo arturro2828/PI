@@ -3,15 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
+ * Group
  * @ORM\Entity
- * @ORM\Table(name="user")
- *
+ * @ORM\Table(name="group")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\GroupRepository")
  */
-class User implements UserInterface {
+class Group implements RoleInterface {
 
     /**
      * @ORM\Column(name="id", type="integer")
@@ -19,10 +20,11 @@ class User implements UserInterface {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
+    
     /**
      * @ORM\Column(type="string", length=100)
      */
+    
     protected $email;
 
     /**
@@ -35,25 +37,35 @@ class User implements UserInterface {
      */
     protected $password;
 
-    
-    /**
-     * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
-     *
-     */
-    protected $groups;
+    /** @ORM\Column(name="role", type="string", length=20, unique=true) */
+    protected $role;
 
-    public function __construct()
+    /** @ORM\ManyToMany(targetEntity="User", mappedBy="groups") */
+    private $users;
+
+    public function __construct() {
+        $this->users = new ArrayCollection();
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
     {
-        $this->groups = new ArrayCollection();
+        return $this->role;
     }
     
+
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -62,9 +74,10 @@ class User implements UserInterface {
      *
      * @param string $email
      *
-     * @return User
+     * @return Group
      */
-    public function setEmail($email) {
+    public function setEmail($email)
+    {
         $this->email = $email;
 
         return $this;
@@ -75,7 +88,8 @@ class User implements UserInterface {
      *
      * @return string
      */
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
@@ -84,9 +98,10 @@ class User implements UserInterface {
      *
      * @param string $username
      *
-     * @return User
+     * @return Group
      */
-    public function setUsername($username) {
+    public function setUsername($username)
+    {
         $this->username = $username;
 
         return $this;
@@ -97,7 +112,8 @@ class User implements UserInterface {
      *
      * @return string
      */
-    public function getUsername() {
+    public function getUsername()
+    {
         return $this->username;
     }
 
@@ -106,9 +122,10 @@ class User implements UserInterface {
      *
      * @param string $password
      *
-     * @return User
+     * @return Group
      */
-    public function setPassword($password) {
+    public function setPassword($password)
+    {
         $this->password = $password;
 
         return $this;
@@ -119,59 +136,56 @@ class User implements UserInterface {
      *
      * @return string
      */
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
 
-    public function getRoles() {
-         return $this->groups->toArray();
-    }
-
-    public function eraseCredentials() {
-        
-    }
-
-    public function getSalt() {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
-        return null;
-    }
-
-    
-
-
-
     /**
-     * Add group
+     * Set role
      *
-     * @param \AppBundle\Entity\Group $group
+     * @param string $role
      *
-     * @return User
+     * @return Group
      */
-    public function addGroup(\AppBundle\Entity\Group $group)
+    public function setRole($role)
     {
-        $this->groups[] = $group;
+        $this->role = $role;
 
         return $this;
     }
 
     /**
-     * Remove group
+     * Add user
      *
-     * @param \AppBundle\Entity\Group $group
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Group
      */
-    public function removeGroup(\AppBundle\Entity\Group $group)
+    public function addUser(\AppBundle\Entity\User $user)
     {
-        $this->groups->removeElement($group);
+        $this->users[] = $user;
+
+        return $this;
     }
 
     /**
-     * Get groups
+     * Remove user
+     *
+     * @param \AppBundle\Entity\User $user
+     */
+    public function removeUser(\AppBundle\Entity\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getGroups()
+    public function getUsers()
     {
-        return $this->groups;
+        return $this->users;
     }
 }

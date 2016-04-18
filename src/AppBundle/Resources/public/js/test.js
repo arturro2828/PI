@@ -13,14 +13,12 @@ $(function () {
     var successBox = $('#signin-success');
     successBox.hide();
 
-    
-
     form.on('submit', function (event) {
         event.preventDefault();
-        
+
         var isUsernameError = false;
-    var isEmailError = false;
-    var isPasswordError = false;
+        var isEmailError = false;
+        var isPasswordError = false;
 
         var username = form.find('#register_username').val();
         var email = form.find('#register_email').val();
@@ -107,12 +105,12 @@ $(function () {
             form.find('.username-hide').hide(500);
             form.find('.email-hide').hide(500);
             form.find('.password-hide').hide(500);
-            
+
             form.off('submit');
             form.find('form').submit();
 
         }
-            
+
     });
 
 });
