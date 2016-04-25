@@ -15,8 +15,9 @@ class AdminController extends Controller{
     
     public function adminAction(){
         
-      
+      $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
         return new Response('<html><body>Admin page!</body></html>');
+        
     }
 
 }

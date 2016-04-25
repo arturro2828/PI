@@ -14,9 +14,9 @@
         <group>
             <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Entity/Group.php</file>
             <file>file:/D:/projekty/nowy1/nowy1/app/config/security.yml</file>
-            <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Repository/GroupRepository.php</file>
             <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Entity/User.php</file>
             <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Controller/AdminController.php</file>
+            <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Entity/GroupRepository.php</file>
             <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Controller/SecurityController.php</file>
         </group>
     </open-files>

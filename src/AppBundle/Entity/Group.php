@@ -7,10 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
- * Group
- * @ORM\Entity
- * @ORM\Table(name="group")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GroupRepository")
+ * 
+ * @ORM\Entity()
+ * @ORM\Table(name="app_groups")
+ * 
  */
 class Group implements RoleInterface {
 
@@ -19,26 +19,13 @@ class Group implements RoleInterface {
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
-    
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    
-    protected $email;
+    private $id;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $username;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $password;
+    /** @ORM\Column(name="name", type="string", length=30) */
+    private $name;
 
     /** @ORM\Column(name="role", type="string", length=20, unique=true) */
-    protected $role;
+    private $role;
 
     /** @ORM\ManyToMany(targetEntity="User", mappedBy="groups") */
     private $users;
@@ -52,12 +39,16 @@ class Group implements RoleInterface {
      *
      * @return string
      */
-    public function getRole()
-    {
+    public function getRole() {
         return $this->role;
     }
+
     
 
+
+   
+
+    
 
     /**
      * Get id
@@ -70,75 +61,27 @@ class Group implements RoleInterface {
     }
 
     /**
-     * Set email
+     * Set name
      *
-     * @param string $email
+     * @param string $name
      *
      * @return Group
      */
-    public function setEmail($email)
+    public function setName($name)
     {
-        $this->email = $email;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get name
      *
      * @return string
      */
-    public function getEmail()
+    public function getName()
     {
-        return $this->email;
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return Group
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return Group
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
+        return $this->name;
     }
 
     /**
