@@ -9,7 +9,7 @@ security:
             entity:
                 class: AppBundle:User
                 property: password
-        
+   
                     
                         
 
@@ -40,9 +40,10 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
     access_control:
         # require ROLE_ADMIN for /admin*
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/user, roles: ROLE_USER }
-       
+        - { path: ^/admin, role: ROLE_ADMIN }
+       # - { path: ^/user, roles: ROLE_USER }
+        - { path: ^/users, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        
      
         
         

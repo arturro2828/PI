@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Usuwanie konta{% endblock %}
+
+{% block body %} 
+    <div class="form-deleting-account">
+
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate', 'action':'/app_dev.php/admin'}}) }}
+
+        <h2  class="form-signin-heading">Podaj nazwe uzytkownika do usuniecia</h2>		
+        
+        <div id="delete-success" class="alert alert-success">Usunieto konto</div>
+
+        <div class="username-hide">
+        {{ form_row(form.username) }}
+        <div id="username-error" class="alert alert-danger">Nie ma takiego uzytkownika</div>
+        </div>
+        
+            
+        {{ form_widget(form.DeleteButton) }}
+             
+    
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

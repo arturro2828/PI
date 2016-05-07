@@ -7,10 +7,10 @@
     {% endif %}
     <title>{% block title %}Strona do logowania{% endblock %}</title>
     <form action="{{ path('login') }}" method="post">
-        <label for="username">username:</label>
+        <label for="username">Nazwa użytkownika:</label>
         <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
-        <label for="password">password:</label>
+        <label for="password">Hasło:</label>
         <input type="password" id="password" name="_password" />
 
         {#

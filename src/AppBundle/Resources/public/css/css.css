@@ -16,7 +16,7 @@ body {
     margin: 10px 0;
 }
 
-.container, .form-signin {
+ .form-signin, .form-deleting-account {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
@@ -30,7 +30,7 @@ body {
     font-weight: normal;
 }
 
-.form-signin .form-control {
+.form-signin .form-control,.form-deleting-account{
     position: relative;
     height: auto;
     -webkit-box-sizing: border-box;
@@ -65,3 +65,4 @@ body {
     background-color: #81F7BE;
     text-align: center;
 }
+

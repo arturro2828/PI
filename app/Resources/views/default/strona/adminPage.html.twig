@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+            <title>{% block title %}Strona administratora{% endblock %}</title>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="{{ path('login') }}">zaloguj</a></li>
+                        <li><a href="{{ path('logout') }}">wyloguj</a></li>
+                        <li><a href="{{ path('registration') }}">załóż konto</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class='upper-strip'>
+            <h2>to jest strona admina</h2>
+        </div>
+
+        <hr>
+        {% for flash_massage in app.session.flashbag.get('notice')%}
+            <div class="alert alert-danger">{{flash_massage}}</div>
+        {%endfor%}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nazwa użytkownika</th>
+                    <th>Adres email</th>
+                    <th>Hasło</th>
+                    <th>Data utworzenia</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <th scope="row">{{user.id}}</th>
+                        <td>{{ user.username|e }}</td>
+                        <td>{{ user.email|e }}</td>
+                        <td>{{ user.password|e }}</td> 
+                        <td>dueDate</td>
+                        <td>
+                            <a href="deleteAccount/{{user.id }}" class="btn btn-danger">Usuń użytkownika</a>
+                        </td>
+                    </tr>
+                </tbody>   
+            {% endfor %}
+
+
+        </table>
+
+
+
+    {% endblock %}

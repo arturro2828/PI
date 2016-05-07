@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller{
      
@@ -13,11 +13,19 @@ class AdminController extends Controller{
      */
     
     
-    public function adminAction(){
+    public function newAction(Request $request) {
+
         
-      $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
-        return new Response('<html><body>Admin page!</body></html>');
-        
+        $form = $this->createForm('AppBundle\Form\Type\FormType');
+        $form->handleRequest($request);
+
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+
+        $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+        return $this->render('default/strona/adminPage.html.twig', [
+                    'form' => $form->createView(), 'users' => $users]
+        );
     }
 
 }

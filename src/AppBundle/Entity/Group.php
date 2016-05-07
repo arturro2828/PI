@@ -7,56 +7,41 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
- * 
- * @ORM\Entity()
  * @ORM\Table(name="app_groups")
- * 
+ * @ORM\Entity()
  */
 class Group implements RoleInterface {
 
     /**
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /** @ORM\Column(name="name", type="string", length=30) */
-    private $name;
+    protected $name;
 
-    /** @ORM\Column(name="role", type="string", length=20, unique=true) */
-    private $role;
+    /** @ORM\Column(name="role", type="string", length=20) */
+    protected $role;
 
     /** @ORM\ManyToMany(targetEntity="User", mappedBy="groups") */
-    private $users;
+    protected $users;
 
     public function __construct() {
         $this->users = new ArrayCollection();
     }
 
-    /**
-     * Get role
-     *
-     * @return string
-     */
     public function getRole() {
         return $this->role;
     }
-
-    
-
-
-   
-
-    
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -67,8 +52,7 @@ class Group implements RoleInterface {
      *
      * @return Group
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -79,8 +63,7 @@ class Group implements RoleInterface {
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -91,8 +74,7 @@ class Group implements RoleInterface {
      *
      * @return Group
      */
-    public function setRole($role)
-    {
+    public function setRole($role) {
         $this->role = $role;
 
         return $this;
@@ -105,8 +87,7 @@ class Group implements RoleInterface {
      *
      * @return Group
      */
-    public function addUser(\AppBundle\Entity\User $user)
-    {
+    public function addUser(\AppBundle\Entity\User $user) {
         $this->users[] = $user;
 
         return $this;
@@ -117,8 +98,7 @@ class Group implements RoleInterface {
      *
      * @param \AppBundle\Entity\User $user
      */
-    public function removeUser(\AppBundle\Entity\User $user)
-    {
+    public function removeUser(\AppBundle\Entity\User $user) {
         $this->users->removeElement($user);
     }
 
@@ -127,8 +107,8 @@ class Group implements RoleInterface {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUsers()
-    {
+    public function getUsers() {
         return $this->users;
     }
+
 }

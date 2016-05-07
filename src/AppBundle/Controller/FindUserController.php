@@ -7,8 +7,6 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Entity\User;
-
 
 class FindUserController extends Controller {
 
@@ -17,21 +15,17 @@ class FindUserController extends Controller {
      */
     public function newAction(Request $request) {
 
-        //$user = new User();
-        //$form = $this->createForm('AppBundle\Form\Type\FormType');
+        
         $form = $this->createForm('AppBundle\Form\Type\FormType');
         $form->handleRequest($request);
-         
 
-      //  if ( ($form->get('saveAndAdd')->isClicked())) {
 
-            $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
-            return $this->render('default/users.html.twig', [
-                        'form' => $form->createView(), 'users' => $users]
-            );
-     //   }
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
 
-      
+        $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+        return $this->render('default/users.html.twig', [
+                    'form' => $form->createView(), 'users' => $users]
+        );
     }
 
 }
