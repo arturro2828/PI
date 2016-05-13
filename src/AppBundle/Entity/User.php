@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\GroupRepository")
  */
-class User implements UserInterface{
+class User implements UserInterface, \Serializable{
 
     /**
      * @ORM\Column(type="integer")
@@ -40,14 +40,55 @@ class User implements UserInterface{
      *
      */
     protected $groups;
+    
+    
 
     public function __construct() {
         $this->groups = new ArrayCollection();
+       
     }
 
-    public function getRoles() {
-        return array('ROLE_ADMIN');
+    public function getRoles()
+    {
+         
+ 
+
+    return $this->groups->toArray();
+         
     }
+    
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->email,
+            $this->password
+           
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->email,
+            $this->password
+           
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
+    }
+    
+    
+    
+    
+    
     
     public function eraseCredentials()
     {

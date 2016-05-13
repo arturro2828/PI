@@ -4,7 +4,7 @@
 {% block body %} 
     <div class="form-signin">
 
-        {{ form_start(form,{'attr': {'novalidate': 'novalidate', 'action':'/app_dev.php/registration'}}) }}
+        {{ form_start(form,{'attr': {'novalidate': 'novalidate', 'action':'/registration'}}) }}
 
         <h2  class="form-signin-heading">Podaj swoje dane</h2>		
         <div id="signin-success" class="alert alert-success">Utworzono konto</div>
@@ -23,7 +23,7 @@
         {{ form_row(form.password) }}
         <div id="password-error" class="alert alert-danger">Błąd wpisywania hasła</div>
         </div>
-            
+        {{ form_row(form._token) }}   
         {{ form_widget(form.RegisterButton) }}
              
     </div>

@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
  * @ORM\Table(name="app_groups")
  * @ORM\Entity()
  */
-class Group implements RoleInterface {
+class Group implements RoleInterface,\Serializable {
 
     /**
      * @ORM\Column(type="integer")
@@ -111,4 +111,27 @@ class Group implements RoleInterface {
         return $this->users;
     }
 
+    public function serialize()
+    {
+        /*
+         * ! Don't serialize $users field !
+         */
+        return \serialize(array(
+            $this->id,
+            $this->name,
+            $this->role
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->name,
+            $this->role
+        ) = \unserialize($serialized);
+    }
 }
