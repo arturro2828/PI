@@ -20,7 +20,7 @@ class RegisterType extends AbstractType {
             ->add('email', TextType::class, array('label' => 'Adres Email','attr' => array('class' => 'form-control')))
             ->add('password', PasswordType::class, array('label' => 'Hasło','attr' => array('class' => 'form-control')))
             ->add('RegisterButton', SubmitType::class, array('label' => 'Utwórz konto', 'attr' => array('class' => 'btn btn-lg btn-primary btn-block')));
-                
+             
     }
              
     public function getName() {

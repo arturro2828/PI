@@ -14,11 +14,21 @@ class PageController extends Controller {
      * @Route("/")
      */
        
-    public function logInAction() {
+    public function logInAction(Request $request) {
 
-        
+         $form = $this->createForm('AppBundle\Form\Type\ProductType');
+        $form->handleRequest($request);
+
+
+      
+
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
+        return $this->render('default/strona/strona.html.twig', [
+                    'form' => $form->createView(), 'products' => $products]
+        );
           
-            return $this->render('default/strona/strona.html.twig');
+            
+            //return $this->render('default/strona/strona.html.twig');
         
     }
 }

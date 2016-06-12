@@ -1,17 +1,19 @@
 <?php
 
+
+
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * 
- * @ORM\Table(name="app_users")
- * @ORM\Entity(repositoryClass="AppBundle\Entity\GroupRepository")
+ * @ORM\Table(name="app_products")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\ProductRepository")
  */
-class User implements UserInterface, \Serializable {
+class Product {
 
     /**
      * @ORM\Column(type="integer")
@@ -29,17 +31,30 @@ class User implements UserInterface, \Serializable {
      * @ORM\Column(name="email", type="string", length=100)
      */
     protected $email;
+    
+    /**
+     * @ORM\Column(name="product", type="string", length=25)
+     */
+    protected $product;
+    
+    
+    /**
+     * @ORM\Column(name="category", type="string", length=100)
+     */
+    protected $category;
 
     /**
-     * @ORM\Column(name="password", type="string", length=100)
+     * @ORM\Column(name="description", type="text", length=1000)
      */
-    protected $password;
-
+    protected $description;
+    
     /**
-     * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
-     *
+     * @ORM\Column(name="picture", type="string", length=1000)
      */
-    protected $groups;
+    
+    protected $picture;
+    
+    
 
     /**
      * @ORM\Column(name="dueDate", type="date")
@@ -55,44 +70,14 @@ class User implements UserInterface, \Serializable {
     }
 
     public function __construct() {
-        $this->groups = new ArrayCollection();
+        //$this->groups = new ArrayCollection();
         $this->dueDate = new \DateTime();
         
     }
 
-    public function getRoles() {
+    
 
-
-
-        return $this->groups->toArray();
-    }
-
-    /** @see \Serializable::serialize() */
-    public function serialize() {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->email,
-            $this->password
-
-                // see section on salt below
-                // $this->salt,
-        ));
-    }
-
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized) {
-        list (
-                $this->id,
-                $this->username,
-                $this->email,
-                $this->password
-
-                // see section on salt below
-                // $this->salt
-                ) = unserialize($serialized);
-    }
-
+    
     public function eraseCredentials() {
         
     }
@@ -207,4 +192,100 @@ class User implements UserInterface, \Serializable {
         
     }
 
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     *
+     * @return Product
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Product
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set product
+     *
+     * @param string $product
+     *
+     * @return Product
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return string
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return Product
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
 }

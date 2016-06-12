@@ -101,7 +101,7 @@ $(function () {
             form.find(':submit').hide(500);
 
             successBox.show(500);
-            successBox.text('Pomyślnie zarejestrowano ');
+            successBox.text('Pomyślnie wprowadzono dane');
             form.find('.username-hide').hide(500);
             form.find('.email-hide').hide(500);
             form.find('.password-hide').hide(500);

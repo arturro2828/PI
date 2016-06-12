@@ -20,7 +20,7 @@ class AdminController extends Controller{
         $form->handleRequest($request);
 
 
-       // $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
+      
 
         $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
         return $this->render('default/strona/adminPage.html.twig', [

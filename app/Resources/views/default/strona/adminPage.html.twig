@@ -50,6 +50,7 @@
                     <th>Adres email</th>
                     <th>Hasło</th>
                     <th>Data utworzenia</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -59,7 +60,7 @@
                         <td>{{ user.username|e }}</td>
                         <td>{{ user.email|e }}</td>
                         <td>{{ user.password|e }}</td> 
-                        <td>dueDate</td>
+                        <td>{{ user.dueDate|date('Y-m-d H:i:s')}}</td>
                         <td>
                             <a href="deleteAccount/{{user.id }}" class="btn btn-danger">Usuń użytkownika</a>
                         </td>
