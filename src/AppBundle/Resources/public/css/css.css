@@ -16,7 +16,7 @@ body {
     margin: 10px 0;
 }
 
- .form-signin, .form-deleting-account,.form-signin-product,.log-in {
+.form-signin, .form-signin-product,.log-in {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
@@ -30,7 +30,7 @@ body {
     font-weight: normal;
 }
 
-.form-signin .form-control,.form-deleting-account{
+.form-signin .form-control{
     position: relative;
     height: auto;
     -webkit-box-sizing: border-box;
@@ -47,7 +47,12 @@ body {
 .form-signin .btn {
     margin-top: 10px;
 }
-
+.log-in .btn {
+    margin-top: 10px;
+}
+.form-signin-product .btn{
+    margin-top: 10px;  
+}
 .alert.alert-success {
     text-align: center;
 }

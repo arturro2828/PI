@@ -18,7 +18,7 @@ class ProductType extends AbstractType{
             ->add('email', TextType::class, array('label' => 'Adres Email','attr' => array('class' => 'form-control')))
             ->add('product', TextType::class, array('label' => 'Nazwa Produktu','attr' => array('class' => 'form-control')))
             ->add('category', ChoiceType::class, array('label' => 'Kategoria','attr' => array('class' => 'form-control'),
-                 'placeholder' => 'Wybierz kategorję',
+                 'placeholder' => 'Wybierz kategorię',
                 'choices'  => array(
                 'Elektronika' => 'Elektronika',
                 'Moda damska' => 'Moda damska',
@@ -29,7 +29,7 @@ class ProductType extends AbstractType{
                 ),))  
             ->add('description', TextType::class, array('label' => 'Opis produktu','attr' => array('class' => 'form-control')))
             ->add('picture', FileType::class,array('label' => 'Dodaj obrazek'))
-            ->add('AddAdvertButton', SubmitType::class, array('label' => 'Dodaj produkt', 'attr' => array('class' => 'btn btn-lg btn-primary btn-block')));
+            ->add('AddAdvertButton', SubmitType::class, array('label' => 'Dodaj ogłoszenie', 'attr' => array('class' => 'btn btn-lg btn-primary btn-block')));
   
              
     }

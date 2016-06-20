@@ -12,10 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Controller/AddProductController.php</file>
-            <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Form/Type/ProductType.php</file>
-            <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Resources/public/css/css.css</file>
-            <file>file:/D:/projekty/nowy1/nowy1/app/Resources/views/default/strona/strona.html.twig</file>
+            <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Controller/RegistrationController.php</file>
+            <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Entity/Group.php</file>
+            <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Entity/UserRepository.php</file>
+            <file>file:/D:/projekty/nowy1/nowy1/app/config/config.yml</file>
+            <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Entity/User.php</file>
+            <file>file:/D:/projekty/nowy1/nowy1/src/AppBundle/Entity/GroupRepository.php</file>
         </group>
     </open-files>
 </project-private>

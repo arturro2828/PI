@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
  * @ORM\Table(name="app_groups")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\GroupRepository")
  */
 class Group implements RoleInterface,\Serializable {
 
@@ -33,6 +33,8 @@ class Group implements RoleInterface,\Serializable {
     }
 
     public function getRole() {
+        
+        
         return $this->role;
     }
 

@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * 
  * @ORM\Table(name="app_users")
- * @ORM\Entity(repositoryClass="AppBundle\Entity\GroupRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
  */
 class User implements UserInterface, \Serializable {
 
@@ -37,7 +37,7 @@ class User implements UserInterface, \Serializable {
 
     /**
      * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
-     *
+     * 
      */
     protected $groups;
 
@@ -181,7 +181,7 @@ class User implements UserInterface, \Serializable {
      */
     public function addGroup(\AppBundle\Entity\Group $group) {
         $this->groups[] = $group;
-
+         
         return $this;
     }
 
@@ -192,6 +192,7 @@ class User implements UserInterface, \Serializable {
      */
     public function removeGroup(\AppBundle\Entity\Group $group) {
         $this->groups->removeElement($group);
+       
     }
 
     /**

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\User;
+use AppBundle\Entity\GroupRepository;
 
 
 class RegistrationController extends Controller {
@@ -25,7 +26,6 @@ class RegistrationController extends Controller {
         
       
         if ( $form->isValid()) {
-
             $user = $form->getData();
             $repository = $this->getDoctrine()->getRepository('AppBundle:User');
             if ($repository->findBy(array('username' => $user->getUsername()))) {
@@ -34,7 +34,18 @@ class RegistrationController extends Controller {
                         '<html><body>Jest taki user. Podaj innego</body></html>'
                 );
             } else {
+              $groupRepository = $this->getDoctrine()->getRepository('AppBundle:Group');
+               $groupName = $this->getParameter('user_group_name');
+               $userGroup = $groupRepository->getGroupByName($groupName);
+               $user->addGroup($userGroup);
+            //   $groupRepository = $this->getUser($user);
+              // $groupRepository->findBy(array('role' => $groupRepository->getRole()));
+              // $group->setId(2);
+               // var_dump($groupRepository);
+               // die;
+               //
                 $em = $this->getDoctrine()->getManager();
+                
                 $em->persist($user);
                 $em->flush();
 

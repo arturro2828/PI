@@ -20,7 +20,7 @@ class PageController extends Controller {
         $form->handleRequest($request);
 
 
-      
+     
 
         $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
         return $this->render('default/strona/strona.html.twig', [

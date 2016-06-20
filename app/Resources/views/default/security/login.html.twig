@@ -7,11 +7,12 @@
     {% endif %}
     <title>{% block title %}Strona do logowania{% endblock %}</title>
     <form action="{{ path('login') }}" method="post">
-        <label for="username">Nazwa użytkownika:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        <h2  class="form-signin-heading">Zaloguj się do serwisu</h2>
+        <div><label for="username">Nazwa użytkownika:</label></div>
+        <div><input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" /></div>
 
-        <label for="password">Hasło:</label>
-        <input type="password" id="password" name="_password" />
+        <div><label for="password">Hasło:</label></div>
+        <div><input class="form-control" type="password" id="password" name="_password" /></div>
 
         {#
             If you want to control the URL the user
@@ -19,7 +20,7 @@
             <input type="hidden" name="_target_path" value="/account" />
         #}
 
-        <button type="submit" class="alert alert-success">login</button>
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Zaloguj</button>
     </form>   
  </div>
 {% endblock %}
