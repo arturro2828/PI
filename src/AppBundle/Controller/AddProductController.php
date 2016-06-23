@@ -15,7 +15,9 @@ class AddProductController extends Controller {
      */
     public function RegisterAction(Request $request) {
 
-
+       $this->denyAccessUnlessGranted('ROLE_USER', null, 'Nie masz uprawnień, żeby wejść na tą stronę!');
+      
+        
         $product = new Product();
         $form = $this->createForm('AppBundle\Form\Type\ProductType', $product);
         $form->handleRequest($request);

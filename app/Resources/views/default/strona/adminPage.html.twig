@@ -34,7 +34,7 @@
             </div>
         </nav>
         <div class='upper-strip'>
-            <h2>to jest strona admina</h2>
+            <h2>To jest strona administratora</h2>
         </div>
 
         <hr>
@@ -50,7 +50,7 @@
                     <th>Adres email</th>
                     <th>Hasło</th>
                     <th>Data utworzenia</th>
-                    
+
                 </tr>
             </thead>
             <tbody>
@@ -60,14 +60,15 @@
                         <td>{{ user.username|e }}</td>
                         <td>{{ user.email|e }}</td>
                         <td>{{ user.password|e }}</td> 
-                        <td>{{ user.dueDate|date('Y-m-d H:i:s')}}</td>
+                        <td>{{ user.dueDate|date('Y-m-d')}}</td>
                         <td>
-                            <a href="deleteAccount/{{user.id }}" class="btn btn-danger">Usuń użytkownika</a>
+                            <a href="deleteAccount/{{user.id }}" class="btn btn-warning">Usuń użytkownika</a>
+                            <a href="viewUserAdds/{{user.id}}" class="btn btn-info">Przeglądaj ogłoszenia użytkownika</a>
                         </td>
                     </tr>
-                </tbody>   
-            {% endfor %}
 
+                {% endfor %}
+            </tbody> 
 
         </table>
 
