@@ -49,8 +49,9 @@ class Product {
     protected $description;
     
     /**
-     * @ORM\Column(name="picture", type="string", length=100)
+     * @ORM\Column(name="picture", type="string", length=1000)
      */
+    
     protected $picture;
     
     
@@ -59,6 +60,11 @@ class Product {
      * @ORM\Column(name="dueDate", type="date")
      */
     protected $dueDate;
+    
+    /**
+     * @ORM\Column(name="editDate", type="date")
+     */
+    protected $editDate;
 
     public function getDueDate() {
         return $this->dueDate;
@@ -262,5 +268,29 @@ class Product {
     public function getProduct()
     {
         return $this->product;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     *
+     * @return Product
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }

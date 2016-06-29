@@ -54,12 +54,15 @@ class Product {
     
     protected $picture;
     
-    
-
     /**
-     * @ORM\Column(name="dueDate", type="date")
+     * @ORM\Column(name="dueDate", type="datetime")
      */
     protected $dueDate;
+    
+    /**
+     * @ORM\Column(name="editDate", type="datetime")
+     */
+    protected $editDate;
 
     public function getDueDate() {
         return $this->dueDate;
@@ -70,12 +73,8 @@ class Product {
     }
 
     public function __construct() {
-        //$this->groups = new ArrayCollection();
-        $this->dueDate = new \DateTime();
         
     }
-
-    
 
     
     public function eraseCredentials() {
@@ -287,5 +286,29 @@ class Product {
     public function getPicture()
     {
         return $this->picture;
+    }
+
+    /**
+     * Set editDate
+     *
+     * @param \DateTime $editDate
+     *
+     * @return Product
+     */
+    public function setEditDate($editDate)
+    {
+        $this->editDate = $editDate;
+
+        return $this;
+    }
+
+    /**
+     * Get editDate
+     *
+     * @return \DateTime
+     */
+    public function getEditDate()
+    {
+        return $this->editDate;
     }
 }

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}Edycja danych{% endblock %}
+
+{% block body %} 
+    <div class="form-signin-edit-user">
+
+        {{ form_start(form) }}
+
+        <h2  class="form-signin-heading-edit-user">Możesz zmodyfikować swoje dane</h2>		
+        <div id="signin-success" class="alert alert-success">Utworzono konto</div>
+
+        <div class="username-hide">
+        {{ form_row(form.username) }}
+        <div id="username-error" class="alert alert-danger">Taki urzytkownik już istnieje</div>
+        </div>
+        
+        <div class="email-hide">
+        {{ form_row(form.email) }}
+        <div id="email-error" class="alert alert-danger">Błąd wpisywania adresu email</div>
+        </div>
+        
+        <div class="password-hide">
+        {{ form_row(form.password) }}
+        <div id="password-error" class="alert alert-danger">Błąd wpisywania hasła</div>
+        </div>
+        {{ form_row(form._token) }}   
+        {{ form_widget(form.EditUserButton) }}
+             
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

@@ -16,6 +16,12 @@ class DeleteAccountController extends Controller {
        
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('AppBundle:User')->find($id);
+        
+
+//wyloguj
+        
+        
+        
         $em->remove($user);
         $em->flush();
         $this->addFlash('notice', 'Usunięto poprawanie użytkownika');

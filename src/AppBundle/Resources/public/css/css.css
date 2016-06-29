@@ -16,7 +16,7 @@ body {
     margin: 10px 0;
 }
 
-.form-signin, .form-signin-product,.log-in {
+.form-signin, .form-signin-product,.log-in,.form-signin-edit-user {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
@@ -44,7 +44,7 @@ body {
     z-index: 2;
 }
 
-.form-signin .btn {
+.form-signin .btn, .form-signin-edit-user .btn  {
     margin-top: 10px;
 }
 .log-in .btn {
@@ -71,3 +71,6 @@ body {
     text-align: center;
 }
 
+.form-signin-heading-edit-user{
+    text-align: center;
+}

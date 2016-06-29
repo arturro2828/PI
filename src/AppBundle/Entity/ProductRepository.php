@@ -18,6 +18,23 @@ class ProductRepository extends EntityRepository
             ->getResult();
     }
 
-    
+    public function search1($searchTerm)
+    {
+        $query = $this
+                ->createQueryBuilder('u')
+                ->where('u.product like :product')
+                ->orWhere('u.description like :description')
+                ->setParameter('product', '%'.$searchTerm.'%')
+                ->setParameter('description', '%'.$searchTerm.'%')
+                ->getQuery();
+
+        
+            $ads = $query->getResult();
+            return $ads;
+      
+        
+                
+    }
+
     
 }

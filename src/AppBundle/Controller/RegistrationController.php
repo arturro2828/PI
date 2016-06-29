@@ -30,6 +30,8 @@ class RegistrationController extends Controller {
             $repository = $this->getDoctrine()->getRepository('AppBundle:User');
             if ($repository->findBy(array('username' => $user->getUsername()))) {
 
+              //  var_dump($user);
+              //  die;
                 return new Response(
                         '<html><body>Jest taki user. Podaj innego</body></html>'
                 );
@@ -38,9 +40,7 @@ class RegistrationController extends Controller {
                $groupName = $this->getParameter('user_group_name');
                $userGroup = $groupRepository->getGroupByName($groupName);
                $user->addGroup($userGroup);
-            //   $groupRepository = $this->getUser($user);
-              // $groupRepository->findBy(array('role' => $groupRepository->getRole()));
-              // $group->setId(2);
+           
                // var_dump($groupRepository);
                // die;
                //

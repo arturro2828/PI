@@ -17,7 +17,7 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a  href="">Strona domowa</a></li>
+                        <li class="active"><a  href="/">Strona domowa</a></li>
                             {% if app.user  %}
                             <li><a>{{ app.user.username }}</a></li>
                                 {% else %} 
@@ -25,7 +25,11 @@
                             {% endif %}
                         <li><a href="{{ path('logout') }}">Wyloguj</a></li>
                         <li><a href="{{ path('registration') }}">Załóż konto</a></li>
-                        <li><a href="{{ path('user') }}">Moje konto konto</a></li>
+                       
+                     
+                        
+                        
+                        <li><a href="{{ path('user') }}">Moje konto</a></li>
                         <form class="navbar-form navbar-right" action="{{ path('addProduct') }}">        
                             <button type="submit" class="btn btn-success">Dodaj przedmiot</button>   
                         </form>  
@@ -51,7 +55,7 @@
                     <th>Adres email</th>
                     <th>Hasło</th>
                     <th>Data utworzenia</th>
-
+                    <th>Data ostatniej modyfikacji</th>
                 </tr>
             </thead>
 
@@ -63,10 +67,11 @@
                     <td>{{ app.user.username|e }}</td>
                     <td>{{ app.user.email|e }}</td>
                     <td>{{ app.user.password|e }}</td> 
-                    <td>{{ app.user.dueDate|date('Y-m-d')}}</td>
+                    <td>{{ app.user.dueDate|date('Y-m-d H:i:s')}}</td>
+                    <td>{{ app.user.dueDate|date('Y-m-d H:i:s')}}</td>
                     <td>
                         <a href="deleteAccount/{{app.user.id }}" class="btn btn-warning">Usuń konto</a>
-                        <a href="users" class="btn btn-info">Edytuj dane</a>
+                        <a href="editUser/{{app.user.id }}" class="btn btn-info">Edytuj dane</a>
                     </td>
                 </tr>
             </tbody>  
@@ -83,9 +88,13 @@
                             <td>{{ product.description|e }}</td>
                             <td><img src="{{ asset('uploads/pictures/' ~ product.picture) }}" ></td>
                             <td>{{ product.category|e }}</td>
-                            <td>dodano: {{ product.dueDate|date('Y-m-d') }}</td>
-                            <td> <a href="deleteProduct/{{product.id}}" class="btn btn-warning">Usuń przedmiot</a>
-                                <a href="users" class="btn btn-info">Edytuj ogłoszenie</a></td>
+                            <td>Dodano: {{ product.dueDate|date('Y-m-d H:i:s') }}</td>
+                            <td>Ostatnia modyfikacja: {{ product.editDate|date('Y-m-d H:i:s') }}</td>
+                            <td> <a href=" {{path('deleteProduct',{'id': product.id})}}" class="btn btn-warning">Usuń przedmiot</a>
+                                
+                               
+                                
+                                <a href="{{path('editProduct',{'id': product.id})}}" class="btn btn-info">Edytuj ogłoszenie</a></td>
                             {% endif %}
                     </tr>
                 </tbody>   

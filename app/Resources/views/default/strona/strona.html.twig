@@ -18,7 +18,7 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a  href="">Strona domowa</a></li>
+                        <li><a class="active" href="/">Strona domowa</a></li>
                             {% if app.user  %}
                             <li><a>{{ app.user.username }}</a></li>
                                 {% else %} 
@@ -26,7 +26,7 @@
                             {% endif %}
                         <li><a href="{{ path('logout') }}">Wyloguj</a></li>
                         <li><a href="{{ path('registration') }}">Załóż konto</a></li>
-                        <li><a href="{{ path('user') }}">Moje konto konto</a></li>
+                        <li><a href="{{ path('user') }}">Moje konto</a></li>
                         <form class="navbar-form navbar-right" action="{{ path('addProduct') }}">        
                             <button type="submit" class="btn btn-success">Dodaj przedmiot</button>   
                         </form>  
@@ -39,16 +39,16 @@
         <div class="alert alert-info">   
             <div id="" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="">Elektronika</a></li>
-                    <li><a href="">Moda damska</a></li> 
-                    <li><a href="">Moda męska</a></li>
-                    <li><a href="">Dom i ogród</a></li>
-                    <li><a href="">Sport</a></li> 
-                    <li><a href="">Motoryzacja</a></li> 
+                    <li><a href="{{ path('searchElectronics') }}">Elektronika</a></li>
+                    <li><a href="{{ path('searchWFashion') }}">Moda damska</a></li> 
+                    <li><a href="{{ path('searchMFashion') }}">Moda męska</a></li>
+                    <li><a href="{{ path('searchHandG') }}">Dom i ogród</a></li>
+                    <li><a href="{{ path('searchSport') }}">Sport</a></li> 
+                    <li><a href="{{ path('searchMotors') }}">Motoryzacja</a></li> 
 
-                    <form class="navbar-form navbar-right">
+                    <form method="post" class="navbar-form navbar-right" action="/search1">
                         <div class="form-group">
-                            <input type="text" placeholder="Znajdź przedmiot" class="form-control">
+                            <input name="search1" type="text" placeholder="Znajdź przedmiot" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-primary">Szukaj</button>
                     </form>                

@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class ProductType extends AbstractType{
+class EditProductType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -29,13 +29,13 @@ class ProductType extends AbstractType{
                 'Motoryzacja' => 'Motoryzacja',
                 ),))  
             ->add('description', TextareaType::class, array('label' => 'Opis produktu','attr' => array('class' => 'form-control')))
-            ->add('picture', FileType::class,array('label' => 'Dodaj obrazek'))
-            ->add('AddAdvertButton', SubmitType::class, array('label' => 'Dodaj ogłoszenie', 'attr' => array('class' => 'btn btn-lg btn-primary btn-block')));
+            ->add('picture', FileType::class,array('label' => 'Zmień zdjęcie', 'data_class' => null))
+            ->add('EditAdvertButton', SubmitType::class, array('label' => 'Modyfikuj ogłoszenie', 'attr' => array('class' => 'btn btn-lg btn-primary btn-block')));
   
              
     }
              
     public function getName() {
-        return 'addProduct';
+        return 'editProduct';
     }
 }

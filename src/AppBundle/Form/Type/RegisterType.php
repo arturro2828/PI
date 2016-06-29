@@ -8,6 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class RegisterType extends AbstractType {
     
@@ -21,6 +23,22 @@ class RegisterType extends AbstractType {
             ->add('password', PasswordType::class, array('label' => 'Hasło','attr' => array('class' => 'form-control')))
             ->add('RegisterButton', SubmitType::class, array('label' => 'Utwórz konto', 'attr' => array('class' => 'btn btn-lg btn-primary btn-block')));
              
+    //     $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+    //    $userEdit = $event->getData();
+     //   $form = $event->getForm();
+
+        // check if the user object is "new"
+        // If no data is passed to the form, the data is "null".
+        // This should be considered a new "Product"
+   //     if (!$userEdit || null === $userEdit->getId()) {
+   //         $form->add('RegisterButton', SubmitType::class, array('label' => 'Utwórz konto', 'attr' => array('class' => 'btn btn-lg btn-primary btn-block')));
+  //      }
+ //   });
+        
+        
+        
+        
+        
     }
              
     public function getName() {
