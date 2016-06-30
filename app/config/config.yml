@@ -81,3 +81,7 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+        
+beelab_recaptcha2:
+    site_key: "%recaptcha_site_key%"
+    secret: "%recaptcha_secret%"

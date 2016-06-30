@@ -6,25 +6,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-
 class SearchController extends Controller {
-    
-   /**
-     * @Route("/search1", name="search1")
-     */
-    public function Search1Action(Request $request) {
 
-      
-        
-        
+    /**
+     * @Route("/searchEngine", name="searchEngine")
+     */
+    public function SearchEngineAction(Request $request) {
+
         $products = $this->getDoctrine()->getRepository('AppBundle:Product')
-                ->search1($request->get('search1'));
+                ->search1($request->get('searchEngine'));
         return $this->render('default/strona/strona.html.twig', [
-                     'products' => $products]
+                    'products' => $products]
         );
-    } 
-    
-    
+    }
 
     /**
      * @Route("/searchElectronics", name="searchElectronics")
@@ -40,7 +34,7 @@ class SearchController extends Controller {
                     'form' => $form->createView(), 'products' => $products]
         );
     }
-    
+
     /**
      * @Route("/searchWFashion", name="searchWFashion")
      */
@@ -70,7 +64,7 @@ class SearchController extends Controller {
                     'form' => $form->createView(), 'products' => $products]
         );
     }
-       
+
     /**
      * @Route("/searchHandG", name="searchHandG")
      */
@@ -85,7 +79,7 @@ class SearchController extends Controller {
                     'form' => $form->createView(), 'products' => $products]
         );
     }
-       
+
     /**
      * @Route("/searchSport", name="searchSport")
      */
@@ -100,7 +94,7 @@ class SearchController extends Controller {
                     'form' => $form->createView(), 'products' => $products]
         );
     }
-      
+
     /**
      * @Route("/searchMotors", name="searchMotors")
      */
@@ -115,4 +109,5 @@ class SearchController extends Controller {
                     'form' => $form->createView(), 'products' => $products]
         );
     }
+
 }

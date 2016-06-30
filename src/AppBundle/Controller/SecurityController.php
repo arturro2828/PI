@@ -26,7 +26,7 @@ class SecurityController extends Controller {
         $lastUsername = $authenticationUtils->getLastUsername();
         
         
-        
+       
 
 
         return $this->render(

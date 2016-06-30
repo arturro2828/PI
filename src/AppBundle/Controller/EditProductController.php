@@ -19,6 +19,7 @@ class EditProductController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $product = $em->getRepository('AppBundle:Product')->find($id);
         $form = $this->createForm('AppBundle\Form\Type\EditProductType', $product);
+        
         $form->handleRequest($request);
          
         if ($form->isValid()) {
