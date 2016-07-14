@@ -8,3 +8,7 @@ services:
         class: AppBundle\Form\Type\RegisterType
         tags: 
             - { name: form.type }
+            
+    app.token_authenticator:
+        class: AppBundle\Security\TokenAuthenticator
+        arguments: ['@doctrine.orm.entity_manager']

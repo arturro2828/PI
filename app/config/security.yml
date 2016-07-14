@@ -31,6 +31,10 @@ security:
             logout:
                     path:   /logout
                     target: /logout=success
+                    
+            guard:
+                authenticators:
+                    - app.token_authenticator
             
             #http_basic: ~
             provider: our_db_provider

@@ -1,0 +1,33 @@
+<html>
+        
+        <body>
+            <div>Witaj<br>
+               Poniżej znajduje się kod potwierdzający rejestrację w serwisie ogłoszeniowym<br>
+               Aby kontynuować rejestrację proszę kliknąć na poniższy link <br>
+               <br>
+               Link potwierdzający: 
+               <br>
+               <a href=" http://localhost:8000/aktywacja/{{ users.id }}/{{users.emailCode}}"> http://localhost:8000/aktywacja/{{ users.id }}/{{users.emailCode}}</a> 
+               <br>
+               Nazwa użytkownika: {{ users.username }}<br>
+               Kod potwierdzający rejestrację: {{users.emailCode}}<br>
+               <br>
+               Jeżeli nie oczekiwałeś na tą wiadomość, oznacza to że ktoś podał twój email w trakcie rejestracji.<br>
+               W takim przypadku proszę zignorować tą wiadomość <br>
+               <br>
+               UWAGA: Wiadomość jest generowana automatycznie, proszę na nią nie odpowiadać.<br>
+            </div>
+        </body>
+    </html>
+    
+    
+  
+
+
+
+
+
+
+
+
+

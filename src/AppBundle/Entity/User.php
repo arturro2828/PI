@@ -45,6 +45,18 @@ class User implements UserInterface, \Serializable {
      * @ORM\Column(name="dueDate", type="date")
      */
     protected $dueDate;
+    
+    /**
+     * @ORM\Column(name="isActive", type="string")
+     */
+    protected $isActive;
+    
+    /**
+     * @ORM\Column(name="emailCode", type="string", length=32)
+     */   
+    
+    protected $emailCode;
+    
 
     public function getDueDate() {
         return $this->dueDate;
@@ -57,7 +69,8 @@ class User implements UserInterface, \Serializable {
     public function __construct() {
         $this->groups = new ArrayCollection();
         $this->dueDate = new \DateTime();
-        
+        $this->emailCode = md5( microtime());
+        $this->isActive = false;
     }
 
     public function getRoles() {
@@ -208,4 +221,45 @@ class User implements UserInterface, \Serializable {
         
     }
 
+
+    /**
+     * Set isActive
+     *
+     * @param string $isActive
+     *
+     * @return User
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return string
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+   
+    public function setEmailCode($emailCode)
+    {
+        $this->emailCode = $emailCode;
+
+        return $this;
+    }
+
+    
+    public function getEmailCode()
+    {
+        return $this->emailCode;
+    }
+
+   
+   
 }

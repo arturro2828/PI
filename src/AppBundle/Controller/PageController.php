@@ -24,9 +24,6 @@ class PageController extends Controller {
         return $this->render('default/strona/strona.html.twig', [
                     'form' => $form->createView(), 'products' => $products]
         );
-          
-            
-            //return $this->render('default/strona/strona.html.twig');
         
     }
 }
