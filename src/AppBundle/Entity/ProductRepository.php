@@ -17,8 +17,18 @@ class ProductRepository extends EntityRepository
             )
             ->getResult();
     }
+    
+    public function getAllQuery($limit = null)
+    {
+        $queryBuilder = $this->createQueryBuilder('Advertisement');
+        $queryBuilder->orderBy('Advertisement.id', 'DESC');
+        if ($limit) {
+            $queryBuilder->setMaxResults($limit);
+        }
+        return $queryBuilder->getQuery();
+    }
 
-    public function search1($searchTerm)
+    public function generalSearch($searchTerm)
     {
         $query = $this
                 ->createQueryBuilder('u')

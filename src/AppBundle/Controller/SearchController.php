@@ -13,11 +13,10 @@ class SearchController extends Controller {
      */
     public function SearchEngineAction(Request $request) {
 
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')
-                ->search1($request->get('searchEngine'));
-        return $this->render('default/strona/strona.html.twig', [
-                    'products' => $products]
-        );
+        $paginator = $this->get('knp_paginator');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+        $pagination = $paginator->paginate($repository->generalSearch($request->get('searchEngine')), $request->get('page', 1));
+        return $this->render('default/strona/strona.html.twig', ['pagination' => $pagination]);
     }
 
     /**
@@ -25,14 +24,10 @@ class SearchController extends Controller {
      */
     public function SearchElectronicsAction(Request $request) {
 
-        $form = $this->createForm('AppBundle\Form\Type\ProductType');
-        $form->handleRequest($request);
-
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')
-                ->findBy(array('category' => 'Elektronika'));
-        return $this->render('default/strona/strona.html.twig', [
-                    'form' => $form->createView(), 'products' => $products]
-        );
+        $paginator = $this->get('knp_paginator');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+        $pagination = $paginator->paginate($repository->findBy(array('category' => 'Elektronika')), $request->get('page', 1));
+        return $this->render('default/strona/strona.html.twig', ['pagination' => $pagination]);
     }
 
     /**
@@ -40,14 +35,10 @@ class SearchController extends Controller {
      */
     public function SearchWFashionAction(Request $request) {
 
-        $form = $this->createForm('AppBundle\Form\Type\ProductType');
-        $form->handleRequest($request);
-
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')
-                ->findBy(array('category' => 'Moda Damska'));
-        return $this->render('default/strona/strona.html.twig', [
-                    'form' => $form->createView(), 'products' => $products]
-        );
+        $paginator = $this->get('knp_paginator');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+        $pagination = $paginator->paginate($repository->findBy(array('category' => 'Moda Damska')), $request->get('page', 1));
+        return $this->render('default/strona/strona.html.twig', ['pagination' => $pagination]);
     }
 
     /**
@@ -55,14 +46,10 @@ class SearchController extends Controller {
      */
     public function SearchMFashionAction(Request $request) {
 
-        $form = $this->createForm('AppBundle\Form\Type\ProductType');
-        $form->handleRequest($request);
-
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')
-                ->findBy(array('category' => 'Moda Męska'));
-        return $this->render('default/strona/strona.html.twig', [
-                    'form' => $form->createView(), 'products' => $products]
-        );
+        $paginator = $this->get('knp_paginator');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+        $pagination = $paginator->paginate($repository->findBy(array('category' => 'Moda Męska')), $request->get('page', 1));
+        return $this->render('default/strona/strona.html.twig', ['pagination' => $pagination]);
     }
 
     /**
@@ -70,14 +57,10 @@ class SearchController extends Controller {
      */
     public function SearchHandGAction(Request $request) {
 
-        $form = $this->createForm('AppBundle\Form\Type\ProductType');
-        $form->handleRequest($request);
-
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')
-                ->findBy(array('category' => 'Dom i ogród'));
-        return $this->render('default/strona/strona.html.twig', [
-                    'form' => $form->createView(), 'products' => $products]
-        );
+        $paginator = $this->get('knp_paginator');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+        $pagination = $paginator->paginate($repository->findBy(array('category' => 'Dom i ogród')), $request->get('page', 1));
+        return $this->render('default/strona/strona.html.twig', ['pagination' => $pagination]);
     }
 
     /**
@@ -85,14 +68,10 @@ class SearchController extends Controller {
      */
     public function SearchSportAction(Request $request) {
 
-        $form = $this->createForm('AppBundle\Form\Type\ProductType');
-        $form->handleRequest($request);
-
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')
-                ->findBy(array('category' => 'Sport'));
-        return $this->render('default/strona/strona.html.twig', [
-                    'form' => $form->createView(), 'products' => $products]
-        );
+        $paginator = $this->get('knp_paginator');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+        $pagination = $paginator->paginate($repository->findBy(array('category' => 'Sport')), $request->get('page', 1));
+        return $this->render('default/strona/strona.html.twig', ['pagination' => $pagination]);
     }
 
     /**
@@ -100,14 +79,10 @@ class SearchController extends Controller {
      */
     public function SearchMotorsAction(Request $request) {
 
-        $form = $this->createForm('AppBundle\Form\Type\ProductType');
-        $form->handleRequest($request);
-
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')
-                ->findBy(array('category' => 'Motoryzacja'));
-        return $this->render('default/strona/strona.html.twig', [
-                    'form' => $form->createView(), 'products' => $products]
-        );
+        $paginator = $this->get('knp_paginator');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+        $pagination = $paginator->paginate($repository->findBy(array('category' => 'Motoryzacja')), $request->get('page', 1));
+        return $this->render('default/strona/strona.html.twig', ['pagination' => $pagination]);
     }
 
 }

@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new Beelab\Recaptcha2Bundle\BeelabRecaptcha2Bundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             
             
         ];

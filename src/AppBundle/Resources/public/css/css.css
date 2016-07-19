@@ -84,3 +84,35 @@ body {
 .form-signin-heading-edit-user{
     text-align: center;
 }
+
+.footer {
+    font-size: 11px;
+    color: #666;
+    clear: both;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.advertisement{
+    padding: 3px;
+
+}
+.advertisement:hover {
+    box-shadow: 0 0 13px 0 rgba(0,0,0,0.15);
+    background-color: #d9edf7;
+    position: relative;
+    z-index: 2;
+    display: block;
+    border: 3px solid #81F7BE; 
+    padding: 0px;
+
+}
+div.table a:hover {text-decoration: none;
+}
+
+.footer li {list-style: none;
+    display: inline;
+    float: left;
+    padding-right: 10px;
+}

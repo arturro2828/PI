@@ -25,10 +25,6 @@
                             {% endif %}
                         <li><a href="{{ path('logout') }}">Wyloguj</a></li>
                         <li><a href="{{ path('registration') }}">Załóż konto</a></li>
-
-
-
-
                         <li><a href="{{ path('user') }}">Moje konto</a></li>
                         <form class="navbar-form navbar-right" action="{{ path('addProduct') }}">        
                             <button type="submit" class="btn btn-success">Dodaj przedmiot</button>   
@@ -68,7 +64,7 @@
                     <td>{{ app.user.email|e }}</td>
                     <td>{{ app.user.password|e }}</td> 
                     <td>{{ app.user.dueDate|date('Y-m-d H:i:s')}}</td>
-                    <td>{{ app.user.dueDate|date('Y-m-d H:i:s')}}</td>
+                    <td>{{ app.user.editDate|date('Y-m-d H:i:s')}}</td>
                     <td>
                         <a href="deleteAccount/{{app.user.id }}" class="btn btn-warning">Usuń konto</a>
                         <a href="editUser/{{app.user.id }}" class="btn btn-info">Edytuj dane</a>
@@ -82,7 +78,7 @@
         </div>
         <table class="table">
             <tbody>
-                {% for product in products %}
+                {% for product in pagination %}
                     <tr>  
                         {%if(app.user.username|e==product.username)%}
                             <td>{{ product.description|e }}</td>
@@ -91,20 +87,16 @@
                             <td>Dodano: {{ product.dueDate|date('Y-m-d H:i:s') }}</td>
                             <td>Ostatnia modyfikacja: {{ product.editDate|date('Y-m-d H:i:s') }}</td>
                             <td> <a href=" {{path('deleteProduct',{'id': product.id})}}" class="btn btn-warning">Usuń przedmiot</a>
-
-
-
                                 <a href="{{path('editProduct',{'id': product.id})}}" class="btn btn-info">Edytuj ogłoszenie</a></td>
                             {% endif %}
                     </tr>
                 </tbody>   
             {% endfor %}
 
-
-
-
         </table>
-
+        <div class="navigation" style="text-align:center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
 
 
     {% endblock %}

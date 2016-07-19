@@ -8,7 +8,6 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
             <title>{% block title %}Strona główna{% endblock %}</title>
 
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -62,33 +61,33 @@
         </div>
 
 
+        {% for product in pagination %}
 
-        <table class="table">
-            <thead>
-                <tr>
+            <div class="advertisement">
+                <a href="">
+                    <td><img src="{{ asset('uploads/pictures/' ~ product.picture) }}" ></td>
+                    <td>{{ product.description|e }}</td>
 
-                </tr>
-            </thead>
-            <tbody>
-                {% for product in products %}
-                    <tr>  
+                    <div class="footer">     
+                        <ul>
+                        <li><strong>{{ product.category|e }}</strong></li>
+                        <li><strong>Dodano: </strong>{{ product.dueDate|date('Y-m-d H:i:s') }}</li>
+                        <li><strong>Ostatnia aktualizacja: </strong>{{ product.editDate|date('Y-m-d H:i:s') }}</li>
+                        </ul>
+                    </div> 
+                </a>
+            </div>
 
-                        <td>{{ product.description|e }}</td>
-                        <td><img src="{{ asset('uploads/pictures/' ~ product.picture) }}" ></td>
-                        <td>{{ product.category|e }}</td>
-                        <td>dodano: {{ product.dueDate|date('Y-m-d') }}</td>
-                    </tr>
-                </tbody>   
-            {% endfor %}
 
 
         </table>
+    {% endfor %}
+    <div class="navigation" style="text-align:center">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 
 
-
-
-
-    {% endblock %}
+{% endblock %}
 
 
 

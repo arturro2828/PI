@@ -30,7 +30,7 @@ security:
             
             logout:
                     path:   /logout
-                    target: /logout=success
+                    target: /
                     
             guard:
                 authenticators:

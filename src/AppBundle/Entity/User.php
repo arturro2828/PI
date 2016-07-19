@@ -42,9 +42,14 @@ class User implements UserInterface, \Serializable {
     protected $groups;
 
     /**
-     * @ORM\Column(name="dueDate", type="date")
+     * @ORM\Column(name="dueDate", type="datetime")
      */
     protected $dueDate;
+    
+    /**
+     * @ORM\Column(name="editDate", type="datetime")
+     */
+    protected $editDate;
     
     /**
      * @ORM\Column(name="isActive", type="string")
@@ -69,6 +74,7 @@ class User implements UserInterface, \Serializable {
     public function __construct() {
         $this->groups = new ArrayCollection();
         $this->dueDate = new \DateTime();
+        $this->editDate = new \DateTime();
         $this->emailCode = md5( microtime());
         $this->isActive = false;
     }
@@ -262,4 +268,28 @@ class User implements UserInterface, \Serializable {
 
    
    
+
+    /**
+     * Set editDate
+     *
+     * @param \DateTime $editDate
+     *
+     * @return User
+     */
+    public function setEditDate($editDate)
+    {
+        $this->editDate = $editDate;
+
+        return $this;
+    }
+
+    /**
+     * Get editDate
+     *
+     * @return \DateTime
+     */
+    public function getEditDate()
+    {
+        return $this->editDate;
+    }
 }

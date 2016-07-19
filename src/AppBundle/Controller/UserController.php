@@ -14,15 +14,10 @@ class UserController extends Controller {
      */
     public function userAction(Request $request) {
 
-
-        $form = $this->createForm('AppBundle\Form\Type\ProductType');
-        $form->handleRequest($request);
-
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
-        
-        return $this->render('default/strona/userPage.html.twig', [
-                    'form' => $form->createView(), 'products' => $products]
-        );
+        $paginator = $this->get('knp_paginator');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
+        $pagination = $paginator->paginate($repository->getAllQuery(), $request->get('page', 1));
+        return $this->render('default/strona/userPage.html.twig', ['pagination' => $pagination]);
     }
 
 }

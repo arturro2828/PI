@@ -30,7 +30,8 @@
         "symfony/assetic-bundle": "^2.7",
         "imagine/imagine": "^0.6.3",
         "google/recaptcha": "~1.1",
-        "beelab/recaptcha2-bundle": "^1.0"
+        "beelab/recaptcha2-bundle": "^1.0",
+        "knplabs/knp-paginator-bundle": "^2.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

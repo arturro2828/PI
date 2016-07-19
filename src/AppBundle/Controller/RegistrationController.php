@@ -45,22 +45,20 @@ class RegistrationController extends Controller {
 
 
                 $message = \Swift_Message::newInstance()
-                        ->setSubject('kod aktywacyjny')
+                        ->setSubject('Kod aktywacyjny')
                         ->setFrom('send@example.com')
                         ->setTo($user->getEmail())
                         ->setContentType('text/html')
                         ->setBody(
-                        $this->render('default/emailMessages/activatingCode.html.twig', [
+                        $this->renderView('default/emailMessages/activatingCode.html.twig', [
                             'form' => $form->createView(), 'users' => $user]
                 ));
                 $this->get('mailer')->send($message);
 
 
+                $this->addFlash('notice', 'W celu potwierdzenia rejestracji odbierz maila i kliknij na link aktywacyjny');
 
-
-                return new Response(
-                        '<html><body>w celu potwierdzenia rejestracji odbierz maila i kliknij na link aktywacyjny</body></html>'
-                );
+                return $this->redirectToRoute('login');
             }
         } else {
             return $this->render('default/form.html.twig', [
